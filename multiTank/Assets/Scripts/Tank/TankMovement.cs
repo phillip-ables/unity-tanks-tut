@@ -73,7 +73,12 @@ public class TankMovement : MonoBehaviour
         }
         else  // driving around
         {
-
+            if (m_MovementAudio.clip == m_EngineIdling)
+            {
+                m_MovementAudio.clip = m_EngineDriving;
+                m_MovementAudio.pitch = Random.Range(m_OriginalPitch - m_PitchRange, m_OriginalPitch + m_PitchRange);  // we just make it accented, vrum vrum
+                m_MovementAudio.Play();
+            }
         }
     }
 
