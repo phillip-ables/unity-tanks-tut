@@ -83,9 +83,11 @@ public class TankMovement : MonoBehaviour
     }
 
 
-    private void FixedUpdate()
+    private void FixedUpdate()  // Runs every physics step
     {
         // Move and turn the tank.
+        Move();
+        Turn();
     }
 
 
