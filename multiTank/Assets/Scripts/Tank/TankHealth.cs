@@ -10,7 +10,6 @@ public class TankHealth : MonoBehaviour
     public Color m_ZeroHealthColor = Color.red;    
     public GameObject m_ExplosionPrefab;
     
-    /*
     private AudioSource m_ExplosionAudio;          
     private ParticleSystem m_ExplosionParticles;   
     private float m_CurrentHealth;  
@@ -33,11 +32,18 @@ public class TankHealth : MonoBehaviour
 
         SetHealthUI();
     }
-    */
 
     public void TakeDamage(float amount)
     {
         // Adjust the tank's current health, update the UI based on the new health and check whether or not the tank is dead.
+        m_CurrentHealth -= amount;
+
+        SetHealthUI();
+
+        if(m_CurrentHealth <= 0f && !m_Dead)
+        {
+            OnDeath();
+        }
     }
 
 
