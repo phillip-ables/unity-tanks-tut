@@ -2,6 +2,7 @@
 
 public class TankMovement : MonoBehaviour
 {
+    // m underscore member variable, useful for the class, everywhere
     public int m_PlayerNumber = 1;         
     public float m_Speed = 12f;            
     public float m_TurnSpeed = 180f;       
@@ -10,7 +11,6 @@ public class TankMovement : MonoBehaviour
     public AudioClip m_EngineDriving;      
     public float m_PitchRange = 0.2f;
 
-    /*
     private string m_MovementAxisName;     
     private string m_TurnAxisName;         
     private Rigidbody m_Rigidbody;         
@@ -27,6 +27,7 @@ public class TankMovement : MonoBehaviour
 
     private void OnEnable ()
     {
+        //so this is just smart to make sure this are set to zero on enable
         m_Rigidbody.isKinematic = false;
         m_MovementInputValue = 0f;
         m_TurnInputValue = 0f;
@@ -46,11 +47,14 @@ public class TankMovement : MonoBehaviour
 
         m_OriginalPitch = m_MovementAudio.pitch;
     }
-    */
 
     private void Update()
     {
         // Store the player's input and make sure the audio for the engine is playing.
+        m_MovementInputValue = Input.GetAxis(m_MovementAxisName);
+        m_TurnInputValue = Input.GetAxis(m_TurnAxisName);
+
+        EngineAudio();
     }
 
 
