@@ -42,6 +42,8 @@ public class TankShooting : MonoBehaviour
             && !m_Fired)
         {
             //at max charge not yet fired
+            m_CurrentLaunchForce = m_MaxLaunchForce;
+            Fire();
 
         }
         else if (Input.GetButtonDown(m_FireButton))
@@ -57,7 +59,8 @@ public class TankShooting : MonoBehaviour
         }
         else if (Input.GetButtonUp(m_FireButton) && !m_Fired)
         {
-            // holding the fire button, not yet fired
+            // we release the button, button hasnt fired yet
+
         }
     }
 
