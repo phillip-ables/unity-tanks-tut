@@ -2,6 +2,7 @@
 using System.Collections;
 //using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -66,7 +67,10 @@ public class GameManager : MonoBehaviour
 
         if (m_GameWinner != null)
         {
-            SceneManager.LoadScene(0);
+            Debug.Log("This needs fixed");
+            //SceneManager.LoadScene(0);
+            Application.LoadLevel(Application.loadedLevel);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene());
         }
         else
         {
@@ -77,6 +81,13 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator RoundStarting()
     {
+        ResetAllTanks();
+        DisableTankControl();
+
+        m_CameraControl.SetStartPositionAndSize();
+
+        m_RoundNumber++;
+        m_MessageText.text = "ROUND " + m_RoundNumber;
         yield return m_StartWait;
     }
 
