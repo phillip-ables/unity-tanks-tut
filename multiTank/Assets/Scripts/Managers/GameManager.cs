@@ -94,7 +94,14 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator RoundPlaying()
     {
-        yield return null;
+        EnableTankControl();
+
+        m_MessageText.text = string.Empty;
+
+        while (!OneTankLeft())
+        {
+            yield return null;
+        }
     }
 
 
