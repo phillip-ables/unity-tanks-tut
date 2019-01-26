@@ -60,7 +60,7 @@ public class TankShooting : MonoBehaviour
             // holding the fire button, not yet fired
             m_CurrentLaunchForce += m_ChargeSpeed * Time.deltaTime;
 
-            m_AimSlider.value = m_CurrentLaunchForce:
+            m_AimSlider.value = m_CurrentLaunchForce;
 
         }
         else if (Input.GetButtonUp(m_FireButton) && !m_Fired)
@@ -74,5 +74,14 @@ public class TankShooting : MonoBehaviour
     private void Fire()
     {
         // Instantiate and launch the shell.
+        m_Fired = true;
+
+        Rigidbody _shellInstance = Instantiate(m_Shell, m_FireTransform.position, m_FireTransform.rotation) as Rigidbody;
+        _shellInstance.velocity = m_CurrentLaunchForce * m_FireTransform.forward;
+
+        m_ShootingAudio.clip = m_FireClip;
+        m_ShootingAudio.Play();
+
+        m_CurrentLaunchForce = m_MinLaunchForce;
     }
 }
