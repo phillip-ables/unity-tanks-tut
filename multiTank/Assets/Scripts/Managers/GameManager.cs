@@ -107,6 +107,10 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator RoundEnding()
     {
+        DisableTankControl();
+
+        m_RoundWinner = null;
+        m_RoundWinner = GetRoundWinner();
         yield return m_EndWait;
     }
 
