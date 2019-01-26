@@ -58,12 +58,15 @@ public class TankShooting : MonoBehaviour
         else if (Input.GetButton(m_FireButton) && !m_Fired)
         {
             // holding the fire button, not yet fired
+            m_CurrentLaunchForce += m_ChargeSpeed * Time.deltaTime;
+
+            m_AimSlider.value = m_CurrentLaunchForce:
 
         }
         else if (Input.GetButtonUp(m_FireButton) && !m_Fired)
         {
             // we release the button, button hasnt fired yet
-
+            Fire();
         }
     }
 
