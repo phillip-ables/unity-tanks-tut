@@ -35,6 +35,13 @@ public class ShellExplosion : MonoBehaviour
             float _damage = CalculateDamage(_targetRigidBody.position);
             _targetHealth.TakeDamage(_damage);
         }
+
+        m_ExplosionParticles.transform.parent = null;
+        m_ExplosionParticles.Play();
+
+        m_ExplosionAudio.Play();
+
+        Destroy(m_ExplosionParticles.gameObject, m_ExplosionParticles.main.duration);
     }
 
 
